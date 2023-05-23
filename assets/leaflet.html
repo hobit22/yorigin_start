@@ -11,7 +11,7 @@
 
     <script>
         // ****** 지도 형성 ****************
-        const map = L.map('map').setView([37.49049, 127.0056], 12); // 서초 마제스타시티
+        const map = L.map('map').setView([37.49049, 127.0056], 12); // 서초
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; OpenStreetMap contributors',
@@ -25,11 +25,11 @@
             console.log(polygon.toGeoJSON());
         });
 
-        // ****** 서울에 랜덤 100개 폴리곤 ************
+        // ****** 서울에 랜덤 10개 폴리곤 ************
         const seoul_bbox = [126.87973, 37.463686, 127.081261, 37.608248];
 
 
-        const randomPolygons = turf.randomPolygon(10000, {bbox: seoul_bbox, max_radial_length: 0.02});
+        const randomPolygons = turf.randomPolygon(10, {bbox: seoul_bbox, max_radial_length: 0.02});
 
         let geoms = []
 
