@@ -10,6 +10,7 @@ from app.entities.collections.shop.shop_document import (
     ShopDocument,
 )
 from app.utils.mongo import db
+import pymongo
 
 
 class ShopCollection:
@@ -63,3 +64,7 @@ class ShopCollection:
                 {"delivery_areas.poly": {"$geoIntersects": {"$geometry": asdict(point)}}},
             )
         ]
+
+    @classmethod
+    async def set_index(self) -> None:
+        await self._collection.create_index([("delivery_areas.poly", pymongo.GEOSPHERE)])
